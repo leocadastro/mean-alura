@@ -19,11 +19,32 @@ api.buscaPorId = function (req, res) {
 
 api.removePorId = function (req, res) {
 	fotos = fotos.filter(function (foto) {
-		return fotos._id != req.params.id;
+		return foto._id != req.params.id;
 	});
 
 	res.sendStatus(204);
 };
+
+api.adiciona = function (req, res) {
+	var foto = req.body;
+	foto._id = fotos.length + 1;
+
+	fotos.push(foto);
+
+	res.json(foto);
+};
+
+api.atualizaPorId = function (req, res) {
+	var foto = req.body;
+
+	var indice = fotos.findIndex(function (foto) {
+		return foto._id == req.params.id;
+	})
+
+	fotos[indice] = foto;
+
+	res.sendStatus(200);
+}
 
 module.exports = function() {
 	return api;
