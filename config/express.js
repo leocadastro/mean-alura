@@ -7,7 +7,8 @@ var app = express();
 app.use(express.static('./public'));
 app.use(bodyParser.json());
 
-load('api', {cwd: 'app'})
+load('models', {cwd: 'app'})
+	.then('api')
 	.then('routes')
 	.into(app);
 
