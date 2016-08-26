@@ -38,7 +38,7 @@ api.removePorId = function (req, res) {
 
 api.adiciona = function (req, res) {
 	var foto = req.body;
-
+	console.log(foto);
 	model
 		.create(foto)
 		.then(function (fotoDb) {

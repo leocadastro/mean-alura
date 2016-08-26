@@ -9,8 +9,12 @@ var schema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	descricao: {
+		type: String,
+		required: false
+	},
 	grupo: {
-		type: Number,
+		type: String,
 		required: true
 	}
 });

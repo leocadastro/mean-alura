@@ -1,13 +1,16 @@
+const mongoose = require('mongoose');
+
 var api = {};
+var model = mongoose.model('Grupo');
 
 api.lista = function (req, res) {
-	var grupos = [
-		{ _id: 1, nome: 'esporte'},
-		{ _id: 2, nome: 'lugares'},
-		{ _id: 3, nome: 'animais'}
-	];
-
-	res.json(grupos);
+	model
+		.find({})
+		.then(function (grupos) {
+			res.json(grupos);
+		}, function (error) {
+			res.status(500).json(error);
+		});
 };
 
 module.exports = api;
