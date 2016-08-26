@@ -2,6 +2,7 @@ module.exports = function (uri) {
 
 	const mongoose = require('mongoose');
 
+	mongoose.Promise = global.Promise;
 	mongoose.connect('mongodb://' + uri);
 
 	mongoose.connection.on('connected', function () {
